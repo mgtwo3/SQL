@@ -1,0 +1,61 @@
+Querying a database with multiple tables containing customer sales data along with products, dates, locations, orderID's, etc. 
+
+
+--Finding how many unique orders placed in January
+
+SELECT COUNT(distinct orderid)
+FROM BIT_DB.JanSales
+WHERE length(orderid) = 6
+AND orderid <> 'Order ID';
+
+
+--Seeing how many of those orders were for an iPhone
+
+SELECT COUNT(distinct orderid)
+FROM BIT_DB.JanSales
+WHERE Product='iPhone'
+AND length(orderid) = 6
+AND orderid <> 'Order ID';
+
+
+--Finding the customer account numbers for all orders placed in February
+
+SELECT distinct acctnum
+FROM BIT_DB.customers cust
+JOIN BIT_DB.FebSales feb
+ON cust.order_id = feb.orderid
+WHERE length(orderid) = 6
+AND orderid <> 'Order ID';
+
+
+--Finding which product was the cheapest sold in January and at what price
+
+SELECT product, price
+FROM BIT_DB.JanSales
+ORDER BY price asc
+LIMIT 1;
+
+
+--Finding the total revenue for each product sold in January
+
+SELECT product, SUM(quantity)* price as revenue
+FROM BIT_DB.JanSales
+GROUP BY product;
+
+
+--Finding what product was sold in a specific location, how many, and total revenue
+
+SELECT product, quantity, sum(quantity)*price as revenue
+FROM BIT_DB.FebSales
+WHERE location = '548 Lincoln St, Seattle, WA 98101';
+
+
+--How many customers ordered more than 2 products in February along with the average amount spent
+
+SELECT COUNT(acctnum) as numberOfCustomers, avg(quantity * price) as averageSpent
+FROM BIT_DB.customers as cust
+JOIN BIT_DB.FebSales as feb
+ON cust.order_id = feb.orderid
+WHERE quantity > 2
+AND length(orderid) = 6
+AND orderid <> 'Order ID';
