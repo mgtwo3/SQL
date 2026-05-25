@@ -27,16 +27,16 @@ FROM BIT_DB.Spotifydata
 ORDER BY popularity desc
 LIMIT 10;
 
-Olivia Rodrigo	good 4 u	95
-Ed Sheeran	Bad Habits	95
-Glass Animals	Heat Waves	94
-Bad Bunny	Yonaguni	94
-The Weeknd	Blinding Lights	93
-Måneskin	Beggin'	93
-Doja Cat	Need to Know	93
-Olivia Rodrigo	drivers license	92
-The Kid LAROI	STAY (with Justin Bieber)	92
-Olivia Rodrigo	traitor	92
+    Olivia Rodrigo	good 4 u	95
+    Ed Sheeran	Bad Habits	95
+    Glass Animals	Heat Waves	94
+    Bad Bunny	Yonaguni	94
+    The Weeknd	Blinding Lights	93
+    Måneskin	Beggin'	93
+    Doja Cat	Need to Know	93
+    Olivia Rodrigo	drivers license	92
+    The Kid LAROI	STAY (with Justin Bieber)	92
+    Olivia Rodrigo	traitor	92
 
 # Next I wanted to see if there is a correlation with tempo and the popularity of a song 
 # First I want to know what the average popularity is
@@ -44,7 +44,7 @@ Olivia Rodrigo	traitor	92
 SELECT avg(popularity)
 FROM BIT_DB.Spotifydata;
 
-avg(popularity) = 86.75
+    avg(popularity) = 86.75
 
 # Checking for tempo with songs greater than the average popularity
 
@@ -52,7 +52,7 @@ SELECT avg(tempo)
 FROM BIT_DB.Spotifydata
 WHERE popularity > 86.75;
 
-avg(tempo) = 125.5
+    avg(tempo) = 125.5
 
 # Checking for tempo with songs less than the average popularity
 
@@ -60,7 +60,7 @@ SELECT avg(tempo)
 FROM BIT_DB.Spotifydata
 WHERE popularity < 86.75;
 
-avg(tempo) = 113.4
+    avg(tempo) = 113.4
 
 # There is correlation with higher tempo songs being more popular to listeners
 #Checking tempo of songs with popularity greater than 90
@@ -69,7 +69,7 @@ SELECT avg(tempo)
 FROM BIT_DB.Spotifydata
 WHERE popularity > 90;
 
-avg(tempo) = 138.8
+    avg(tempo) = 138.8
 
 # Which artists have the most songs in the top 50 
 
@@ -80,16 +80,16 @@ HAVING Appearances > 1
 ORDER BY Appearances desc
 ;
 
-Olivia Rodrigo	4	143.875
-Doja Cat	3	110.97
-Bad Bunny	3	109.928
-The Weeknd	2	171.005
-The Kid LAROI	2	169.928
-Måneskin	2	134.002
-Lil Nas X	2	178.781
-Dua Lipa	2	102.977
-BTS	2	109.997
-Ariana Grande	2	144.015
+    Olivia Rodrigo	4	143.875
+    Doja Cat	3	110.97
+    Bad Bunny	3	109.928
+    The Weeknd	2	171.005
+    The Kid LAROI	2	169.928
+    Måneskin	2	134.002
+    Lil Nas X	2	178.781
+    Dua Lipa	2	102.977
+    BTS	2	109.997
+    Ariana Grande	2	144.015
 
 #Finding the average tempo of artists who have appeared in the top 50 the most
 
@@ -102,7 +102,7 @@ HAVING Appearances > 1
 ORDER BY Appearances desc)
 ;
 
-avg(tempo) = 137.5
+    avg(tempo) = 137.5
 
 # The tempo of 137.5 should be the target for creating a popular song
 
