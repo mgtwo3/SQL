@@ -1,4 +1,4 @@
-# I downloaded spotify data from kaggle and created a table in SQL to import the .csv
+-- I downloaded spotify data from kaggle and created a table in SQL to import the .csv
 
 CREATE TABLE BIT_DB.Spotifydata (
 id integer PRIMARY KEY,
@@ -20,7 +20,7 @@ tempo decimal(6,3) NOT NULL,
 duration_ms integer NOT NULL,
 time_signature integer NOT NULL )
 
-# I explored the data by seeing what songs ranked in the top 10 by popularity
+-- I explored the data by seeing what songs ranked in the top 10 by popularity
 
 SELECT artist_name, track_name, popularity
 FROM BIT_DB.Spotifydata
@@ -38,15 +38,15 @@ LIMIT 10;
     The Kid LAROI	STAY (with Justin Bieber)	92
     Olivia Rodrigo	traitor	92
 
-# Next I wanted to see if there is a correlation with tempo and the popularity of a song 
-# First I want to know what the average popularity is
+-- Next I wanted to see if there is a correlation with tempo and the popularity of a song 
+-- First I want to know what the average popularity is
 
 SELECT avg(popularity)
 FROM BIT_DB.Spotifydata;
 
     avg(popularity) = 86.75
 
-# Checking for tempo with songs greater than the average popularity
+-- Checking for tempo with songs greater than the average popularity
 
 SELECT avg(tempo)
 FROM BIT_DB.Spotifydata
@@ -54,7 +54,7 @@ WHERE popularity > 86.75;
 
     avg(tempo) = 125.5
 
-# Checking for tempo with songs less than the average popularity
+-- Checking for tempo with songs less than the average popularity
 
 SELECT avg(tempo)
 FROM BIT_DB.Spotifydata
@@ -62,8 +62,8 @@ WHERE popularity < 86.75;
 
     avg(tempo) = 113.4
 
-# There is correlation with higher tempo songs being more popular to listeners
-#Checking tempo of songs with popularity greater than 90
+-- There is correlation with higher tempo songs being more popular to listeners
+-- Checking tempo of songs with popularity greater than 90
 
 SELECT avg(tempo)
 FROM BIT_DB.Spotifydata
@@ -71,7 +71,7 @@ WHERE popularity > 90;
 
     avg(tempo) = 138.8
 
-# Which artists have the most songs in the top 50 
+-- Which artists have the most songs in the top 50 
 
 SELECT artist_name, COUNT(track_name) AS Appearances, tempo
 FROM BIT_DB.Spotifydata
@@ -91,7 +91,7 @@ ORDER BY Appearances desc
     BTS	2	109.997
     Ariana Grande	2	144.015
 
-#Finding the average tempo of artists who have appeared in the top 50 the most
+-- Finding the average tempo of artists who have appeared in the top 50 the most
 
 SELECT avg(tempo)
 FROM (
@@ -104,6 +104,6 @@ ORDER BY Appearances desc)
 
     avg(tempo) = 137.5
 
-# The tempo of 137.5 should be the target for creating a popular song
+-- The tempo of 137.5 should be the target for creating a popular song
 
 
